@@ -1,0 +1,13 @@
+import { useState } from "react";
+import "./App.css";
+import Experience from "./components/Experience";
+
+function App() {
+  return (
+    <>
+      <Experience />
+    </>
+  );
+}
+
+export default App;
