@@ -1,19 +1,17 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
+import Floor from "./Floor";
 
 function Experience() {
   return (
-    <Canvas camera={{ fov: 45, position: [0, 0, 2] }}>
+    <Canvas camera={{ fov: 45, position: [0, 3, 7], near: 0.1, far: 100 }}>
       {/* <Perf position="top-left" /> */}
 
       <ambientLight intensity={3.5} />
       <directionalLight position={[10, 10, 10]} intensity={3.8} color="white" />
 
-      <mesh>
-        <boxGeometry args={[0.5, 0.5, 0.5]} />
-        <meshBasicMaterial color="red" />
-      </mesh>
+      <Floor row={2} col={2} size={5} />
 
       <OrbitControls />
     </Canvas>
