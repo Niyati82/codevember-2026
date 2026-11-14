@@ -24,7 +24,7 @@ function Scene() {
       />
 
       {/* Cinematic flying camera */}
-      <CameraFly size={7} speed={0.6} />
+      <CameraFly size={7} speed={0.4} />
 
       <CameraLight />
 

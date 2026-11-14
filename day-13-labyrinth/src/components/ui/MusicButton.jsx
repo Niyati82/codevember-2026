@@ -6,7 +6,7 @@ function MusicButton() {
   const audioRef = useRef(null);
 
   useEffect(() => {
-    const audio = new Audio("/ambient.mp3");
+    const audio = new Audio(`${import.meta.env.BASE_URL}ambient.mp3`);
     audio.loop = true;
     audio.volume = 0.4;
 
