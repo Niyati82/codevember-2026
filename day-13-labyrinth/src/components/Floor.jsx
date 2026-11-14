@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment, useMemo } from "react";
 import generateMaze from "../algorithms/generateMaze";
 import Walls from "./Walls";
 
@@ -6,7 +6,9 @@ function Floor(props) {
   const { row, col, size } = props;
   console.log(col - (size - 1) / 2, row - (size - 1) / 2);
 
-  const maze = generateMaze(5, 5);
+  const maze = useMemo(() => {
+    return generateMaze(50, 50);
+  }, []);
   const cellA = maze[0][0];
   const cellB = maze[0][1];
   console.log(cellA.walls.right);
@@ -16,7 +18,7 @@ function Floor(props) {
     <>
       {maze.map((row, rowIndex) =>
         row.map((cell, colIndex) => (
-          <>
+          <Fragment key={`${rowIndex}-${colIndex}`}>
             {/* Floor */}
             <mesh
               position={[
@@ -28,7 +30,7 @@ function Floor(props) {
               key={`${rowIndex}-${colIndex}`}
             >
               <planeGeometry args={[1, 1]} />
-              <meshBasicMaterial color="red" />
+              <meshStandardMaterial color="white" />
             </mesh>
             {/* 
                 // Cells Rendering
@@ -41,7 +43,7 @@ function Floor(props) {
                   0.5,
                   rowIndex - (size - 1) / 2,
                 ]}
-                args={[0.1, 1, 1]}
+                args={[0.03, 1, 1]}
               />
             )}
             {/* Left */}
@@ -52,7 +54,7 @@ function Floor(props) {
                   0.5,
                   rowIndex - (size - 1) / 2,
                 ]}
-                args={[0.1, 1, 1]}
+                args={[0.03, 1, 1]}
               />
             )}
             {/* Top */}
@@ -61,9 +63,9 @@ function Floor(props) {
                 position={[
                   colIndex - (size - 1) / 2,
                   0.5,
-                  rowIndex - (size - 1) / 2 - 0.05,
+                  rowIndex - (size - 1) / 2 - 0.5,
                 ]}
-                args={[1, 1, 0.1]}
+                args={[1, 1, 0.03]}
               />
             )}
             {/* Bottom */}
@@ -74,10 +76,10 @@ function Floor(props) {
                   0.5,
                   rowIndex - (size - 1) / 2 + 0.5,
                 ]}
-                args={[1, 1, 0.1]}
+                args={[1, 1, 0.03]}
               />
             )}
-          </>
+          </Fragment>
         ))
       )}
     </>

@@ -4,10 +4,17 @@ function Walls(props) {
   const { position, args } = props;
 
   return (
-    <mesh position={position}>
-      <boxGeometry args={args} />
-      <meshStandardMaterial color="blue" />
-    </mesh>
+    <>
+      {/* Dark metallic wall */}
+      <mesh position={position} castShadow receiveShadow>
+        <boxGeometry args={args} />
+        <meshStandardMaterial
+          color="#ffffff"
+          metalness={0.85}
+          roughness={0.25}
+        />
+      </mesh>
+    </>
   );
 }
 
